@@ -50,15 +50,7 @@ return [
             ],
         ],*/
 
-        // 配置数据库
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=w.llqhz.cn;dbname=vue_blog',
-            'username' => 'llqhz',
-            'password' => 'llqhz',
-            'charset' => 'utf8',
-            'tablePrefix' => 'blog_',
-        ],
+
     ],
 
     'aliases' => [
