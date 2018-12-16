@@ -1,0 +1,95 @@
+
+.SumoSelect .select-all {
+    padding-bottom: 27px;
+}
+
+
+/*tagsInput*/
+div.tagsinput {
+    border: 1px solid #CCC;
+    background: #FFF;
+    padding: 6px 6px 0;
+    width: 300px;
+    overflow-y: auto
+}
+
+div.tagsinput span.tag {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border: none;
+    display: block;
+    float: left;
+    padding: 5px 9px;
+    background: #1ABB9C;
+    color: #F1F6F7;
+    margin-right: 5px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-family: helvetica
+}
+
+div.tagsinput span.tag a {
+    color: #F1F6F7!important
+}
+
+div.tagsinput span.tag a {
+    font-weight: 700;
+    color: #82ad2b;
+    font-size: 11px
+}
+
+div.tagsinput input {
+    width: 80px;
+    margin: 0;
+    font-family: helvetica;
+    font-size: 13px;
+    border: 1px solid transparent;
+    padding: 3px;
+    background: 0 0;
+    color: #000;
+    outline: 0
+}
+
+div.tagsinput div {
+    display: block;
+    float: left
+}
+
+
+/*iCheck 修复禁用按钮*/
+.radio, .checkbox {
+    display: inline-block;
+}
+.radio label, .checkbox label {
+    padding-left: 0;
+    padding-right: 20px;
+}
+.icheckbox_flat-green.disabled input,
+.iradio_flat-green.disabled input {
+    width: 40px;
+    margin-left: 10px;
+}
+
+/*switchery 开关 */
+.switchery {
+    width: 32px;
+    height: 20px
+}
+.switchery>small {
+    width: 20px;
+    height: 20px
+}
+.js-switch-yii-container {
+    padding-top: 7px;
+}
+
+/*预览图片*/
+.picture-preview {
+    height: 150px;
+    width: 150px;
+    border: 1px solid red;
+    margin-bottom: 5px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
