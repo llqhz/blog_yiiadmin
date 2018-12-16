@@ -64,6 +64,13 @@ class HelloController extends Controller
         return $this->render('user-center', $assign);
     }
 
+    public function actionPanel()
+    {
+        $users = UserCenterModel::findAll(true);
+        var_dump($users);
+        die();
+    }
+
 
     public function actionHappy()
     {

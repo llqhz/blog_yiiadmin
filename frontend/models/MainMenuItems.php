@@ -34,7 +34,7 @@ class MainMenuItems
                     ["label" => "Form", "url" => ["hello/form"]],
                     ["label" => "Say", "url" => ["hello/say"]],
                     ["label" => "Happy", "url" => ["hello/happy"]],
-                    ["label" => "Panel", "url" => ["site/panel"]],
+                    ["label" => "Panel", "url" => ["hello/panel"]],
                 ],
             ],
             [

@@ -32,11 +32,11 @@ class ActiveForm extends YiiActiveForm
             'submit' => '<button type="submit" class="btn btn-success">保 存</button>',
         ];
         $template = '<div class="ln_solid"></div>
-        <div class="form-group">
-            <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-               %s                
-            </div>
-        </div>';
+                     <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                           %s                
+                        </div>
+                     </div>';
         $btns = array_filter($btns,function($key, $val) use($buttons) {
             return true;
             //return array_key_exists($key, $buttons);

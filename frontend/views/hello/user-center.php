@@ -37,7 +37,9 @@ use yii\helpers\Html;
 <?php ActiveForm::end(); ?>
 
 
-
+<!--1. 富文本编辑器
+2. input输入框带图标
+3. 输入框默认值-->
 
 <?php $this->beginBlock('select2'); ?>
 $(()=>{
