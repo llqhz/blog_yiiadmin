@@ -108,7 +108,7 @@ class ActiveField extends YiiActiveField
         return parent::textInput($options);
     }
 
-    public function fileInputs($options=[])
+    public function dropzone($options=[])
     {
         //$this->containerId = 'containerId';
 

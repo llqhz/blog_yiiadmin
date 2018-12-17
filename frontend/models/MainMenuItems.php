@@ -31,6 +31,7 @@ class MainMenuItems
                 "items" => [
                     ["label" => "Menu", "url" => ["site/menu"]],
                     ["label" => "User", "url" => ["hello/user-center"]],
+                    ["label" => "BlogUser", "url" => ["hello/blog-user"]],
                     ["label" => "Form", "url" => ["hello/form"]],
                     ["label" => "Say", "url" => ["hello/say"]],
                     ["label" => "Happy", "url" => ["hello/happy"]],

@@ -20,7 +20,7 @@ class UserCenterModel extends ActiveRecord
     }
 
 
-    // 设定表名称
+    // 设定表字段标题
     public function attributeLabels()
     {
         return [
@@ -28,7 +28,6 @@ class UserCenterModel extends ActiveRecord
             'email' => '邮箱',
             'nickname' => '昵称',
             'sex' => '性别',
-            'image_id' => '图片id',
             'major' =>  '职业' ,
             'hometown' =>  '家乡',
             'mobile' =>  '手机号码',

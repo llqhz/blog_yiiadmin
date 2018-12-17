@@ -9,9 +9,12 @@
 namespace frontend\controllers;
 
 
+use frontend\components\forms\Tools;
 use frontend\models\hello\UploadTest;
+use frontend\models\user\BlogUserModel;
 use frontend\models\user\UserCenterModel;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class HelloController extends Controller
 {
@@ -69,6 +72,23 @@ class HelloController extends Controller
         $users = UserCenterModel::findAll(true);
         var_dump($users);
         die();
+    }
+
+    public function actionBlogUser()
+    {
+        $model = new BlogUserModel();
+        if ( \Yii::$app->request->isPost ) {
+            if ( $model->load(\Yii::$app->request->post()) ) {
+                $model->upload();
+                $model->save();
+            }
+        } else {
+            $model = BlogUserModel::findOne(12);
+        }
+        $assign = [
+            'model' => $model,
+        ];
+        return $this->render('blog-user', $assign);
     }
 
 

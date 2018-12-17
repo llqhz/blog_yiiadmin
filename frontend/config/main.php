@@ -40,7 +40,7 @@ return [
         'assetManager' => [
             // 清除web/assets缓存
             'appendTimestamp' => true,
-            'linkAssets' => false,  // 实时生成assets文件
+            'linkAssets' => true,  // 实时生成assets文件
         ],
 
         /*'urlManager' => [
