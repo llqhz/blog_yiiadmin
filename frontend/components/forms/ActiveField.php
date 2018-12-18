@@ -111,16 +111,22 @@ class ActiveField extends YiiActiveField
     public function dropzone($options=[])
     {
         //$this->containerId = 'containerId';
-
+        $mockFiles = Html::getAttributeValue($this->model,$this->attribute);
+        if ( !is_array($mockFiles) || empty($mockFiles) ) {
+            $mockFiles = [];
+        }
         $this->wrapperOptions = [
             'class' => 'col-md-8 col-sm-8 col-xs-12'
         ];
         $options = array_merge([
+            // 图片回显
+            'mockFiles' => $mockFiles,
             //开启拖拽排序
             'sortable'=>true,
             'clientOptions' => [
                 'url'=> \yii\helpers\Url::toRoute('dropzone/upload'),
-                'maxFilesize' => '6',
+                //'maxFilesize' => 6,
+                'maxFiles' => 6,
                 'autoProcessQueue'=>true,
                 'dictCancelUpload'=>'取消上传',
                 'dictRemoveFile'=>'删除文件',
@@ -165,9 +171,18 @@ class ActiveField extends YiiActiveField
         return parent::fileInput($options);
     }
 
-
-
-
+    public function fileInput($options = [])
+    {
+        $url = Html::getAttributeValue($this->model,$this->attribute);
+        $this->template = "{label}\n{beginWrapper}\n{preview}\n{input}\n{error}\n{endWrapper}\n{hint}";
+        if ( !empty($url) ) {
+            $file = substr($url,strrpos($url,'/')+1);
+            $this->parts['{preview}'] = '<p class="h5">当前文件: <a href="'.$url.'" target="_blank" class="text-success">'.$file.'</a></p>';
+        } else {
+            $this->parts['{preview}'] = '';
+        }
+        return parent::fileInput($options);
+    }
 
 
 }

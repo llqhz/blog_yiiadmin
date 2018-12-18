@@ -15,7 +15,7 @@ class DropzoneController extends Controller
 {
     public function actions()
     {
-        return [
+        $actions = [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
                 'view' => '@yiister/gentelella/views/error',
@@ -23,17 +23,36 @@ class DropzoneController extends Controller
             'upload' => [
                 'class' => 'twitf\dropzone\UploadAction',
                 'config' => [
-                    "filePathFormat" => "/uploads/image/".date('YmdHis').'/', //上传保存路径 返回给前台的路径
-                    "fileRoot" => \Yii::getAlias('@webroot'),//上传的根目录
+                    "filePathFormat" => \Yii::getAlias('@web')."/uploads/image/".date('YmdHis').'/', //上传保存路径 返回给前台的路径
+                    "fileRoot" => $_SERVER['DOCUMENT_ROOT'],//上传的根目录
                 ],
             ],
-            'remove' => [
+            /*'remove' => [
                 'class' => 'twitf\dropzone\RemoveAction',
                 'config' => [
                     "fileRoot" => \Yii::getAlias("@webroot"),//上传的根目录
                 ],
-            ],
+            ],*/
         ];
+        return $actions;
+    }
+
+    public function actionRemove()
+    {
+        $url = \Yii::$app->request->post('url');
+        if ( strpos($url,\Yii::getAlias('@web')) === false ) {
+            $fileRoot = \Yii::getAlias('@webroot');
+        } else {
+            $fileRoot = $_SERVER['DOCUMENT_ROOT']; // 不带尾缀'/'
+        }
+        @unlink($fileRoot . $url);
+        $filedir  = dirname($fileRoot . $url);
+        $files = @scandir($filedir);
+        if ( is_array($files) && count($files)<=2) {
+            @rmdir($filedir);//如果是./和../,直接删除文件夹
+        }
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return ['status'=>'success'];
     }
 
 

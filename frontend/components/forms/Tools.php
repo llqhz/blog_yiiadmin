@@ -16,8 +16,11 @@ class Tools
     public static function upload($model,$field)
     {
         $file = UploadedFile::getInstance($model,$field);
+        if ( !$file ) {
+            unset($model->$field);
+            return;
+        }
 
-        if ( !$file ) return;
         if ( substr($file->type,0,5) == 'image' ) {
             $dir = 'images/';
         } else {
@@ -30,6 +33,6 @@ class Tools
         // 这个函数有毒 是该php安装本身的问题
         $file->saveAs($path,false);
         //move_uploaded_file($path,$file->tempName);
-        $model->$field = $path;
+        $model->$field = \Yii::getAlias('@web').'/'.$path;
     }
 }

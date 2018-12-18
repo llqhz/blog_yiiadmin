@@ -56,11 +56,13 @@ class HelloController extends Controller
     public function actionUserCenter()
     {
         if ( $res = \Yii::$app->request->post() ) {
-
-            var_dump($res);
-            return;
+            $model = UserCenterModel::find()
+                ->orderBy('id desc')
+                ->one();
+        } else {
+            $model = new UserCenterModel();
         }
-        $model = new UserCenterModel();
+        var_dump($model);die();
         $assign = [
             'model' => $model,
         ];
@@ -77,13 +79,19 @@ class HelloController extends Controller
     public function actionBlogUser()
     {
         $model = new BlogUserModel();
+
         if ( \Yii::$app->request->isPost ) {
+            $post = \Yii::$app->request->post();
+            $model = BlogUserModel::findOne(2);
             if ( $model->load(\Yii::$app->request->post()) ) {
                 $model->upload();
                 $model->save();
             }
         } else {
-            $model = BlogUserModel::findOne(12);
+            $li = BlogUserModel::find()
+                ->orderBy('id desc')
+                ->one();
+            $model = $li ?: $model;
         }
         $assign = [
             'model' => $model,

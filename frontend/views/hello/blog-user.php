@@ -41,7 +41,7 @@ use frontend\components\forms\ActiveForm;
 
 <?= $form->field($model, 'maxim')->textarea(['rows'=>3]) ?>
 
-<?= $form->field($model,'album')->dropzone() ?>
+<?= $form->field($model,'album')->dropzone([]) ?>
 
 <?= $form->field($model, 'introduction')->fileInput() ?>
 

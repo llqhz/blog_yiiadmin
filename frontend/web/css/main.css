@@ -93,3 +93,8 @@ div.tagsinput div {
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+/* dropzone 缩略图片回显 */
+.dropzone .dz-preview .dz-image img {
+    width: 100%;
+}
