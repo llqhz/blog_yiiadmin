@@ -33,6 +33,9 @@ class DropzoneController extends Controller
                     "fileRoot" => \Yii::getAlias("@webroot"),//上传的根目录
                 ],
             ],*/
+            'ueditorUpload' => [
+                'class' => 'kucha\ueditor\UEditorAction',
+            ],
         ];
         return $actions;
     }

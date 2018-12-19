@@ -41,11 +41,29 @@ use frontend\components\forms\ActiveForm;
 
 <?= $form->field($model, 'maxim')->textarea(['rows'=>3]) ?>
 
-<?= $form->field($model,'album')->dropzone([]) ?>
+<?= $form->field($model,'album')->dropzone() ?>
 
 <?= $form->field($model, 'introduction')->fileInput() ?>
+
+<?= $form->field($model, 'note')->markdown() ?>
+
+<?= $form->field($model, 'article')->ueditor() ?>
+
+
+<!--<div id="markdown">
+    <textarea name="markdown" cols="30" rows="10"></textarea>
+</div>-->
+
+
 
 <?= $form->submitBtns() ?>
 
 <?php ActiveForm::end(); ?>
+
+
+
+<?php $this->beginBlock("aaa") ?>
+
+<?php $this->endBlock() ?>
+<?php $this->registerJs($this->blocks["aaa"], \yii\web\View::POS_END); ?>
 

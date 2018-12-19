@@ -98,3 +98,21 @@ div.tagsinput div {
 .dropzone .dz-preview .dz-image img {
     width: 100%;
 }
+
+/*markdown 全屏 */
+.editormd-fullscreen {
+    z-index: 1;
+}
+
+/*调节markdown*/
+.CodeMirror-sizer {
+    margin-left: 39px!important;
+}
+
+.CodeMirror-gutter-wrapper {
+    left: -39px!important;
+    width: 39px!important;
+}
+div.CodeMirror-scroll {
+    height: inherit;
+}

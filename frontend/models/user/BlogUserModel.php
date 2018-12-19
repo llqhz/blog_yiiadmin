@@ -45,7 +45,9 @@ class BlogUserModel extends ActiveRecord
             'image_id' => '图片id',
             'mobile' =>  '手机号码',
             'maxim' =>  '座右铭' ,
-            'introduction' => '简历附件'
+            'introduction' => '简历附件',
+            'note' => '开发笔记',
+            'article' => '博客文章'
         ];
     }
 
@@ -98,7 +100,7 @@ class BlogUserModel extends ActiveRecord
             [[
                 'name','nickname','password','sex','age','birthday','privileges',
                 'major','education','subscribe','tags','maxim','album',
-                'maxim',
+                'maxim','note','article',
             ],'safe'],
             [['email',],'email'],
             [['headimgurl'], 'image', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],

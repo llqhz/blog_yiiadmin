@@ -8,9 +8,11 @@
 
 namespace frontend\components\forms;
 
+use frontend\components\tools\markdown\EditorMarkdown;
 use yii\bootstrap\ActiveField as YiiActiveField;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class ActiveField extends YiiActiveField
 {
@@ -182,6 +184,36 @@ class ActiveField extends YiiActiveField
             $this->parts['{preview}'] = '';
         }
         return parent::fileInput($options);
+    }
+
+    public function markdown()
+    {
+        $this->template = "{label}\n<br><br>\n{beginWrapper}\n{input}\n{error}\n{endWrapper}\n{hint}";
+        $this->wrapperOptions = [
+            'class' => 'col-md-12 col-sm-12 col-xs-12'
+        ];
+        $this->labelOptions = [
+            'class' => 'control-label col-md-3 col-sm-3 col-xs-12',
+        ];
+        $value = Html::getAttributeValue($this->model,$this->attribute);
+        return $this->widget(EditorMarkdown::className());
+    }
+
+    public function ueditor($options = [])
+    {
+        $this->template = "{label}\n<br><br>\n{beginWrapper}\n{input}\n{error}\n{endWrapper}\n{hint}";
+        $this->wrapperOptions = [
+            'class' => 'col-md-12 col-sm-12 col-xs-12'
+        ];
+        $this->labelOptions = [
+            'class' => 'control-label col-md-3 col-sm-3 col-xs-12',
+        ];
+        $options = [
+            'clientOptions' => [
+                'serverUrl' => Url::toRoute('dropzone/ueditorUpload'),
+            ],
+        ];
+        return $this->widget('kucha\ueditor\UEditor',$options);
     }
 
 

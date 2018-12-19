@@ -39,10 +39,8 @@ class ActiveForm extends YiiActiveForm
                      </div>';
         $btns = array_filter($btns,function($key, $val) use($buttons) {
             return true;
-            //return array_key_exists($key, $buttons);
         }, ARRAY_FILTER_USE_BOTH);
         return sprintf($template,implode('',$btns));
     }
-
 
 }
