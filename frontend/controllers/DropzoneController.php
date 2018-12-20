@@ -10,9 +10,15 @@ namespace frontend\controllers;
 
 
 use yii\web\Controller;
+use yii\web\Response;
+use yii\web\UploadedFile;
 
 class DropzoneController extends Controller
 {
+    // 取消上传验证
+    public $enableCsrfValidation = false;
+
+
     public function actions()
     {
         $actions = [
@@ -56,6 +62,24 @@ class DropzoneController extends Controller
         }
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return ['status'=>'success'];
+    }
+
+    public function actionEditormdUpload()
+    {
+        $file = UploadedFile::getInstanceByName('editormd-image-file');
+        $path = "uploads/image/".date('YmdHis');
+        if (!file_exists($path)) {
+            mkdir($path,0777,true);
+        }
+        $saveName = date('YmdHis') . '_' . rand(100000, 999999) . '.' . $file->getExtension();
+
+        \Yii::$app->getResponse()->format=Response::FORMAT_JSON;
+        if ($file->saveAs($path.'/'.$saveName)){
+            $root = \Yii::$app->request->getHostInfo().\Yii::getAlias('@web');
+            return [ 'success' => 1,'url' => $root.'/'.$path.'/'.$saveName,'message'=>'上传成功'];
+        } else {
+            return ['success' => 0, 'message'=>'上传失败: '.$file->error];
+        }
     }
 
 

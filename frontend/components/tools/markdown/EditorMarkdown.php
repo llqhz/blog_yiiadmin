@@ -10,6 +10,7 @@ namespace frontend\components\tools\markdown;
 
 
 use yii\bootstrap\Html;
+use yii\helpers\Url;
 use yii\widgets\InputWidget;
 
 class EditorMarkdown extends InputWidget
@@ -114,6 +115,11 @@ class EditorMarkdown extends InputWidget
             'height' => 640,
             'syncScrolling' => "single",
             'path' => $this->libPath,
+
+            /**上传图片相关配置如下*/
+            'imageUpload' => true,
+            'imageFormats' => ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            'imageUploadURL' => Url::toRoute('dropzone/editormd-upload') ,//注意你后端的上传图片服务地址
         ];
         $js = '$(()=>editormd( '. json_encode($options) .' ))';
         $this->getView()->registerJs($js);
